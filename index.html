@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Пробіотик для курей Wenlikang - Акція!</title>
     <style>
-        /* --- ДИЗАЙН И СТИ --- */
+        /* --- ДИЗАЙН И СТИЛИ --- */
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
         .container { max-width: 600px; margin: 0 auto; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; padding-bottom: 20px;}
         
@@ -17,10 +17,11 @@
         .price-block { text-align: center; padding: 20px; background: #fffde7; border-bottom: 2px dashed #ff9800; }
         .old-price { font-size: 20px; color: #888; text-decoration: line-through; }
         .new-price { font-size: 34px; font-weight: bold; color: #d32f2f; margin: 10px 0; }
+        .promo-1plus1 { font-size: 24px; font-weight: 900; color: #d32f2f; margin: 15px 0 5px 0; text-transform: uppercase; background: #ffebee; padding: 10px; border-radius: 8px; border: 2px solid #f44336; animation: pulse 2s infinite;}
         
         /* Таймер */
         .timer-box { margin-top: 15px; }
-        .timer-title { font-weight: bold; color: #d32f2f; margin-bottom: 10px; }
+        .timer-title { font-weight: bold; color: #333; margin-bottom: 10px; font-size: 16px;}
         .timer { display: flex; justify-content: center; gap: 10px; }
         .time-block { background: #333; color: #fff; padding: 10px; border-radius: 5px; min-width: 50px; font-size: 20px; font-weight: bold; text-align: center; }
         .time-label { display: block; font-size: 12px; font-weight: normal; margin-top: 5px; }
@@ -29,37 +30,48 @@
         .section-title { text-align: center; color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 10px; margin-top: 30px; }
         
         .list-block ul { list-style: none; padding: 0; }
-        .list-block li { padding: 10px 0; border-bottom: 1px solid #eee; position: relative; padding-left: 30px; }
+        .list-block li { padding: 10px 0; border-bottom: 1px solid #eee; position: relative; padding-left: 30px; font-size: 16px; }
         .list-block li::before { content: "✅"; position: absolute; left: 0; top: 10px; }
 
         /* До и После */
         .before-after { display: flex; gap: 10px; margin-top: 20px; }
         .before-after div { flex: 1; text-align: center; background: #f9f9f9; padding: 10px; border-radius: 8px; border: 1px solid #ddd; }
         .before-after img { margin-bottom: 10px; }
-        .bad-text { color: #d32f2f; font-weight: bold; }
-        .good-text { color: #4CAF50; font-weight: bold; }
+        .bad-text { color: #d32f2f; font-weight: bold; font-size: 18px; }
+        .good-text { color: #4CAF50; font-weight: bold; font-size: 18px; }
 
-        /* Відгуки */
+        /* Карусель відгуків (ОНОВЛЕНА ДЛЯ СТАРШИХ ЛЮДЕЙ) */
         .reviews { margin-top: 30px; }
-        .review-card { background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #ff9800; }
-        .review-name { font-weight: bold; margin-bottom: 5px; }
-        .stars { color: #ff9800; margin-bottom: 5px; }
+        .reviews-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding-bottom: 15px; scrollbar-width: none; -ms-overflow-style: none; }
+        .reviews-carousel::-webkit-scrollbar { display: none; }
+        .review-card { min-width: 85%; scroll-snap-align: center; background: #f9f9f9; padding: 20px 15px; border-radius: 8px; border: 1px solid #e0e0e0; border-top: 4px solid #ff9800; box-sizing: border-box; text-align: center; }
+        .review-header { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 15px; }
+        
+        /* Збільшене фото */
+        .review-img-box { width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 3px solid #4CAF50; flex-shrink: 0; margin: 0 auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .review-img-box img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .review-name { font-weight: bold; font-size: 18px; color: #222; }
+        .stars { color: #ff9800; font-size: 18px; margin-top: -5px; }
+        .review-text { font-size: 16px; font-style: italic; color: #333; line-height: 1.4; }
 
-        /* Інструкція (новий блок) */
+        /* Інструкція */
         .instruction-block { background: #f1f8e9; padding: 20px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #8bc34a; }
         .instruction-block h3 { color: #2e7d32; margin-top: 0; }
         .instruction-block ul.steps { padding-left: 20px; margin-bottom: 20px; }
-        .instruction-block ul.steps li { margin-bottom: 8px; }
+        .instruction-block ul.steps li { margin-bottom: 8px; font-size: 16px; }
         .instruction-block .benefits-list { list-style: none; padding: 0; }
-        .instruction-block .benefits-list li { padding: 6px 0; }
+        .instruction-block .benefits-list li { padding: 6px 0; font-size: 16px; }
 
         /* Форма */
-        .order-form { background: #e8f5e9; padding: 20px; border-radius: 8px; margin-top: 30px; border: 2px solid #4CAF50; }
-        .order-form h2 { text-align: center; margin-top: 0; color: #2e7d32;}
+        .order-form { background: #e8f5e9; padding: 20px; border-radius: 8px; margin-top: 20px; margin-bottom: 20px; border: 2px solid #4CAF50; box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);}
+        .order-form h2 { text-align: center; margin-top: 0; color: #2e7d32; font-size: 22px;}
         .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-        .form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
-        .submit-btn { background-color: #ff0000; color: white; border: none; padding: 15px; width: 100%; font-size: 20px; font-weight: bold; border-radius: 5px; cursor: pointer; transition: 0.3s; animation: pulse 2s infinite; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px;}
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 16px; background: #fff; }
+        .form-group select { font-weight: bold; color: #d32f2f; border: 2px solid #ff9800; cursor: pointer; }
+        
+        .submit-btn { background-color: #ff0000; color: white; border: none; padding: 18px; width: 100%; font-size: 20px; font-weight: bold; border-radius: 5px; cursor: pointer; transition: 0.3s; animation: pulse 2s infinite; text-transform: uppercase;}
         .submit-btn:hover { background-color: #cc0000; }
         
         .image-banner { margin-top: 20px; text-align: center; }
@@ -71,6 +83,7 @@
         }
 
         #successMessage { display: none; text-align: center; padding: 20px; background: #d4edda; color: #155724; border-radius: 5px; margin-top: 20px; font-weight: bold;}
+        .swipe-hint { text-align: center; font-size: 14px; color: #666; margin-bottom: 10px; font-style: italic; font-weight: bold;}
     </style>
 </head>
 <body>
@@ -87,8 +100,10 @@
             <div class="old-price">Звичайна ціна: 499 грн</div>
             <div class="new-price">Ціна по акції: 249 грн</div>
             
+            <div class="promo-1plus1">🎁 СУПЕР АКЦІЯ 1+1 = 3 🎁</div>
+            
             <div class="timer-box">
-                <div class="timer-title">До кінця акції залишилось:</div>
+                <div class="timer-title">⏳ До кінця акції залишилось:</div>
                 <div class="timer">
                     <div class="time-block"><span id="hours">02</span><span class="time-label">Годин</span></div>
                     <div class="time-block">:<span class="time-label">&nbsp;</span></div>
@@ -121,34 +136,55 @@
                 <div>
                     <img src="before.jpg" alt="До">
                     <div class="bad-text">ДО:</div>
-                    <p style="font-size: 14px;">Кволість, хвороби, низька несучість, проблеми з травленням.</p>
+                    <p style="font-size: 15px;">Кволість, хвороби, низька несучість, проблеми з травленням.</p>
                 </div>
                 <div>
                     <img src="after.jpg" alt="Після">
                     <div class="good-text">ПІСЛЯ Wenlikang:</div>
-                    <p style="font-size: 14px;">Здорова птиця, міцний імунітет, максимальна продуктивність!</p>
+                    <p style="font-size: 15px;">Здорова птиця, міцний імунітет, максимальна продуктивність!</p>
                 </div>
             </div>
 
             <div class="reviews">
                 <h2 class="section-title">Відгуки наших клієнтів</h2>
+                <div class="swipe-hint">👈 Гортайте відгуки вбік 👉</div>
                 
-                <div class="review-card">
-                    <div class="review-name">Микола, фермер</div>
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"Взяв на пробу для своїх несучок. Результат помітив вже за 5 днів! Яєць стало значно більше, кури активні, добре їдять. Буду замовляти ще."</p>
-                </div>
-                
-                <div class="review-card">
-                    <div class="review-name">Оксана</div>
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"Після антибіотиків курчата почали падати, була діарея. Знайомий порадив Wenlikang. Засіб просто врятував мій виводок! Виживаність 100%."</p>
-                </div>
+                <div class="reviews-carousel">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-img-box"><img src="otzivodin.jpg" alt="Фото відгуку 1"></div>
+                            <div class="review-name">Марія Іванівна</div>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="review-text">"Замовляла відразу 3 упаковки за ціною двох по акції 1+1=3. Дуже вигідно! Кури перестали хворіти, несучість виросла вже на другий тиждень. Для мого господарства це просто знахідка."</div>
+                    </div>
 
-                <div class="review-card">
-                    <div class="review-name">Олександр Володимирович</div>
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"Встиг замовити по акції за 249 грн. Відмінний пробіотик. Птиця росте як на дріжджах, ніяких проблем з кишечником. Рекомендую всім господарям!"</p>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-img-box"><img src="otzivdva.jpg" alt="Фото відгуку 2"></div>
+                            <div class="review-name">Валентина Петрівна</div>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="review-text">"Завжди мала проблему з курчатами, багато гинуло після вилуплення. Цього разу з перших днів пропоїла цим пробіотиком — жодних втрат! Дуже дякую, буду замовляти ще."</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-img-box"><img src="otzivtri.jpg" alt="Фото відгуку 3"></div>
+                            <div class="review-name">Світлана</div>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="review-text">"Засіб дійсно працює. Додаю у теплу воду, розчиняється без проблем. Птиця стала значно жвавішою, апетит покращився, діарея пройшла за пару днів."</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-img-box"><img src="otzivchetiri.jpg" alt="Фото відгуку 4"></div>
+                            <div class="review-name">Олена Михайлівна</div>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="review-text">"Дівчата, це щось! Після курсу антибіотиків кури були дуже кволі. Wenlikang швидко поставив їх на ноги. Сервіс супер, доставили швидко, акція 1+1=3 дуже порадувала!"</div>
+                    </div>
                 </div>
             </div>
 
@@ -174,13 +210,24 @@
                 </ul>
             </div>
 
+            <div class="image-banner">
+                <img src="predbait.jpg" alt="Увага Акція">
+            </div>
+
             <div class="order-form" id="order">
-                <h2>Замовити зі знижкою 50%</h2>
-                <p style="text-align: center; color: #d32f2f; font-weight: bold;">Залишилось по акції: 14 упаковок</p>
+                <h2>Оформлення замовлення</h2>
+                <p style="text-align: center; color: #d32f2f; font-weight: bold; margin-bottom: 15px;">🔥 Залишилось по акції: 14 упаковок</p>
+                
                 <form id="tgForm">
                     <div class="form-group">
-                        <label for="quantity">Кількість упаковок (шт):</label>
-                        <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+                        <label for="quantity">Оберіть варіант замовлення:</label>
+                        <select id="quantity" name="quantity" required>
+                            <option value="1 шт - 249 грн">1 упаковка - 249 грн</option>
+                            <option value="Акція 1+1=3 - 499 грн" selected>🔥 АКЦІЯ 1+1=3 (Отримати 3 шт) - 499 грн</option>
+                            <option value="2 шт - 498 грн">2 упаковки - 498 грн</option>
+                            <option value="4 шт - 996 грн">4 упаковки - 996 грн</option>
+                            <option value="Інша кількість">Інша кількість (вказати менеджеру)</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="name">Ваше ПІБ:</label>
@@ -190,7 +237,7 @@
                         <label for="phone">Номер телефону:</label>
                         <input type="tel" id="phone" name="phone" placeholder="+380990000000" required>
                     </div>
-                    <button type="submit" class="submit-btn" id="submitBtn">ОФОРМИТИ ЗАМОВЛЕННЯ ЗА 249 ГРН</button>
+                    <button type="submit" class="submit-btn" id="submitBtn">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
                 </form>
 
                 <div id="successMessage">
@@ -237,14 +284,14 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault(); 
 
-            submitBtn.textContent = 'Відправка...';
+            submitBtn.textContent = 'ВІДПРАВКА...';
             submitBtn.disabled = true;
 
             const qty = document.getElementById('quantity').value;
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
 
-            const textMessage = `🔥 НОВЕ ЗАМОВЛЕННЯ (Акція 249 грн)\n\n📦 Товар: Wenlikang\n🔢 Кількість: ${qty} шт.\n👤 ПІБ: ${name}\n📞 Телефон: ${phone}`;
+            const textMessage = `🔥 НОВЕ ЗАМОВЛЕННЯ\n\n📦 Замовлення: ${qty}\n👤 ПІБ: ${name}\n📞 Телефон: ${phone}`;
 
             const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(textMessage)}`;
 
@@ -255,13 +302,13 @@
                         successMessage.style.display = 'block';
                     } else {
                         alert('Помилка відправки. Перевірте з\'єднання.');
-                        submitBtn.textContent = 'ОФОРМИТИ ЗАМОВЛЕННЯ ЗА 249 ГРН';
+                        submitBtn.textContent = 'ОФОРМИТИ ЗАМОВЛЕННЯ';
                         submitBtn.disabled = false;
                     }
                 })
                 .catch(error => {
                     alert('Помилка з\'єднання. Спробуйте пізніше.');
-                    submitBtn.textContent = 'ОФОРМИТИ ЗАМОВЛЕННЯ ЗА 249 ГРН';
+                    submitBtn.textContent = 'ОФОРМИТИ ЗАМОВЛЕННЯ';
                     submitBtn.disabled = false;
                 });
         });
